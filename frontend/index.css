@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #1c1c2e, #2c2f4a);
+  color: #f5f5f5;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color: #fbd2c9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(to right, #2c2f4a, #3b3f61);
+}
+
+.hero .btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background-color: #fbd2c9;
+  color: #1c1c2e;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.info, .expert, .services, .stats, .testimonials, .faq {
+  padding: 4rem 2rem;
+  background-color: #262640;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+}
+
+.expert-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.expert-card img {
+  width: 200px;
+  border-radius: 100px;
+}
+
+.cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #3b3f61;
+  padding: 1.5rem;
+  border-radius: 10px;
+  flex: 1 1 30%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.stat-boxes {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.testimonial {
+  font-style: italic;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+footer {
+  background-color: #1c1c2e;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+}
+
+footer .socials a {
+  color: #fbd2c9;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}

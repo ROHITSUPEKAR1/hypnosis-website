@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment - Mind & Health Wellness Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./appoinment.css"/>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="./assets/mind&health-wellness-logo.jpg" alt="Mind & Health Wellness Logo">
+  </div>
+
+  <!-- Menu Toggle Button (Right side) -->
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+  <nav id="navbar">
+    <!-- Close Button inside menu -->
+    <div class="close-btn" id="close-btn">&times;</div>
+
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="./appoinment.html">Appointments</a>
+    <a href="contact.html">Contact</a>
+    <select id="language" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="mr">मराठी</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Schedule Your Appointment</h1>
+  <p>Start your healing journey today with our expert care</p>
+</section>
+
+<section class="appointment-form">
+  <div class="form-wrapper">
+    <h2>Appointment Form</h2>
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+
+      <div class="input-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+91 9876543210" required>
+      </div>
+
+      <div class="input-group">
+        <label for="service">Select Service</label>
+        <select id="service" name="service" required>
+          <option value="">-- Choose Service --</option>
+          <option value="Hypnotherapy">Hypnotherapy</option>
+          <option value="Yoga & Meditation">Yoga & Meditation</option>
+          <option value="Ayurveda Treatments">Ayurveda Treatments</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="message">Additional Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here..."></textarea>
+      </div>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Mind & Health Wellness Centre</p>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navbar = document.getElementById('navbar');
+  const closeBtn = document.getElementById('close-btn');
+
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.add('show');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    navbar.classList.remove('show');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && e.target !== menuToggle) {
+      navbar.classList.remove('show');
+    }
+  });
+</script>
+<script src="js/script.js"></script>
+
+
+</body>
+</html>

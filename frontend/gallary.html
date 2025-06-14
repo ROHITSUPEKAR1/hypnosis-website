@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Continuous Scrolling Certificates</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    h1 {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .cert-wrapper {
+      overflow: hidden;
+      position: relative;
+      max-width: 95%;
+      margin: 30px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 20px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cert-container {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollLeft 60s linear infinite;
+    }
+
+    .paused {
+      animation-play-state: paused !important;
+    }
+
+    .cert-image {
+      display: inline-block;
+      width: 400px;
+      height: 280px;
+      object-fit: cover;
+      margin: 0 10px;
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .cert-image:hover {
+      transform: scale(1.05);
+    }
+
+    .hint {
+      font-size: 14px;
+      color: #777;
+      margin-top: 12px;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Tablet View */
+    @media (max-width: 768px) {
+      .cert-image {
+        width: 250px;
+        height: 180px;
+        margin: 0 6px;
+      }
+    }
+
+    /* Mobile View */
+    @media (max-width: 480px) {
+      .cert-image {
+        width: 180px;
+        height: 160px;
+        margin: 0 4px;
+      }
+
+      .hint {
+        font-size: 12px;
+      }
+
+      .cert-wrapper {
+        padding: 12px 0;
+      }
+    }
+
+    /* Video Section */
+    .video-section {
+      max-width: 95%;
+      margin: 20px auto;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .video-thumbnail {
+      width: 300px;
+      height: 180px;
+      object-fit: cover;
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .video-thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .video-thumbnail {
+        width: 220px;
+        height: 140px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .video-thumbnail {
+        width: 160px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- <h1>Dr. Haribhau Dorlikar's Certificates</h1> -->
+
+  <div class="cert-wrapper">
+    <div class="cert-container" id="certContainer">
+      <!-- Images will be inserted here -->
+    </div>
+  </div>
+
+  <!-- <div class="hint">Touch/Click a certificate to pause scrolling for 5 seconds</div> -->
+
+  <!-- Video Section -->
+  <div class="video-section">
+    <div class="video-title">Actions</div>
+    <div class="video-container" id="videoContainer">
+      <!-- Videos will be inserted here -->
+    </div>
+  </div>
+
+  <script>
+    const certificates = [
+      "./assets/certiicate1.png", "./assets/certiicate2.png", "./assets/certiicate3.png", "./assets/certiicate4.png", "./assets/certiicate5.png",
+      "./assets/certiicate6.png", "./assets/certiicate7.png", "./assets/certiicate8.png", "./assets/certiicate9.png", "./assets/certiicate10.png"
+    ];
+
+    const videos = [
+      "video.mp4", "video2.mp4", "video4.mp4", "video5.mp4", "video9.mp4","video6.mp4"
+    ];
+
+    const container = document.getElementById("certContainer");
+    const videoContainer = document.getElementById("videoContainer");
+    let pauseTimeout;
+
+    function pauseScroll() {
+      clearTimeout(pauseTimeout);
+      container.classList.add("paused");
+      pauseTimeout = setTimeout(() => {
+        container.classList.remove("paused");
+      }, 5000);
+    }
+
+    function addCertificates() {
+      for (let i = 0; i < 2; i++) {
+        certificates.forEach((src, index) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = `Certificate ${index + 1}`;
+          img.className = "cert-image";
+          img.loading = "lazy";
+
+          img.addEventListener("click", pauseScroll);
+          img.addEventListener("touchstart", pauseScroll);
+
+          container.appendChild(img);
+        });
+      }
+    }
+
+    function addVideos() {
+      videos.forEach((src, index) => {
+        const video = document.createElement("video");
+        video.src = src;
+        video.className = "video-thumbnail";
+        video.setAttribute("muted", true);
+        video.setAttribute("playsinline", true);
+        video.setAttribute("preload", "metadata");
+        video.setAttribute("autoplay", true);
+        video.setAttribute("loop", true);
+        video.setAttribute("data-aos", "flip-up");
+        video.setAttribute("data-aos-delay", index * 100);
+        video.setAttribute("loading", "lazy");
+        video.controls = false;
+
+        video.addEventListener("click", function () {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+
+        videoContainer.appendChild(video);
+      });
+    }
+
+    addCertificates();
+    addVideos();
+  </script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>

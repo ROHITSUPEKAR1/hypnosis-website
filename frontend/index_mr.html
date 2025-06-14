@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>माइंड & हेल्थ वेलनेस सेंटर</title>
+  <link rel="stylesheet" href="./styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+</head>
+
+<body>
+<header>
+  <div class="logo">
+    <img src="./assets/mind&health-wellness-logo.jpg" alt="Mind & Health Wellness Logo">
+  </div>
+
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+  <nav id="navbar">
+    <div class="close-btn" id="close-btn">&times;</div>
+
+    <a href="index.html" class="active">मुख्यपृष्ठ</a>
+    <a href="about.html">आमच्याबद्दल</a>
+    <a href="services.html">सेवा</a>
+    <a href="./appoinment.css">अपॉइंटमेंट</a>
+    <a href="contact.html">संपर्क</a>
+    <select id="language" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="mr" selected>मराठी</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 id="heroTitle">माइंड & हेल्थ वेलनेस सेंटर मध्ये आपले स्वागत आहे</h1>
+    <p id="heroSubtitle">आपल्या मन, शरीर आणि आत्म्याची पूर्ण काळजी</p>
+    <a href="./appoinment.html" class="btn" id="heroButton">अपॉइंटमेंट बुक करा</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-item">
+    <img src="assets/illustration_of_hypnotherapy_.jpeg" alt="हिप्नोथेरपी"/>
+    <h3>हिप्नोथेरपी</h3>
+  </div>
+  <div class="feature-item">
+    <img src="./assets/vector_illustration_of_a_person_meditating_in.jpeg" alt="योग आणि ध्यान"/>
+    <h3>योग आणि ध्यान</h3>
+  </div>
+  <div class="feature-item">
+    <img src="assets/vector_illustration_of_ayurveda_treatment_showing_herbal.jpeg" alt="आयुर्वेद उपचार"/>
+    <h3>आयुर्वेद उपचार</h3>
+  </div>
+</section>
+
+<section class="statistics">
+  <div class="stat-item">
+    <h2>1000+</h2>
+    <p>स्टेज शो</p>
+  </div>
+  <div class="stat-item">
+    <h2>70,000+</h2>
+    <p>बरे झालेले रुग्ण</p>
+  </div>
+  <div class="stat-item">
+    <h2>40000+</h2>
+    <p>योग आणि ध्यानाने बरे झालेले</p>
+  </div>
+</section>
+
+<section class="why-choose">
+  <h2>माइंड & हेल्थ वेलनेस का निवडावे?</h2>
+  <div class="reasons">
+    <div class="reason-card">
+      <h3>२६+ वर्षांचा अनुभव</h3>
+      <p>विश्वासार्ह क्लिनिकल आणि स्टेज हिप्नोथेरपी तज्ञता</p>
+    </div>
+    <div class="reason-card">
+      <h3>पूर्ण वेलनेस</h3>
+      <p>हिप्नोथेरपी, योग आणि आयुर्वेद यांचे संपूर्ण संयोजन</p>
+    </div>
+    <div class="reason-card">
+      <h3>प्रमाणित तज्ञ</h3>
+      <p>हिप्नोथेरपी आणि पर्यायी वैद्यकशास्त्रात एमफिल व पीएचडी</p>
+    </div>
+  </div>
+</section>
+
+<div class="cert-wrapper">
+  <h1>डॉ. हरीभाऊ डोरलिकर यांचे प्रमाणपत्रे</h1>
+  <div class="cert-container" id="certContainer"></div>
+</div>
+
+<div class="video-section">
+  <h2>क्रिया</h2>
+  <div class="video-container" id="videoContainer"></div>
+</div>
+
+<script>
+  const certificates = [
+    "./assets/certiicate1.png", "./assets/certiicate2.png", "./assets/certiicate3.png", "./assets/certiicate4.png",
+    "./assets/certiicate5.png", "./assets/certiicate6.png", "./assets/certiicate7.png",
+    "./assets/certiicate8.png", "./assets/certiicate9.png", "./assets/certiicate10.png"
+  ];
+
+  const videos = [
+    "./videos/ ", "video2.mp4", "video4.mp4", "video5.mp4", "video9.mp4", "video6.mp4"
+  ];
+
+  const container = document.getElementById("certContainer");
+  const videoContainer = document.getElementById("videoContainer");
+
+ certificates.forEach((src, index) => {
+  const wrapper = document.createElement("div");
+  wrapper.className = "cert-item";
+
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = `Certificate ${index + 1}`;
+  img.className = "cert-image";
+  img.loading = "lazy";
+
+  wrapper.appendChild(img);
+  container.appendChild(wrapper);
+});
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const navbar = document.getElementById('navbar');
+  const closeBtn = document.getElementById('close-btn');
+
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.add('show');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    navbar.classList.remove('show');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && e.target !== menuToggle) {
+      navbar.classList.remove('show');
+    }
+  });
+</script>
+
+<footer>
+  <p>&copy; २०२५ माइंड & हेल्थ वेलनेस सेंटर. सर्व हक्क राखीव.</p>
+</footer>
+
+<script src="./lang.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

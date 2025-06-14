@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Downloads/HARIBHAU_HYPNO_WEBSITE/HARIBHAU_HYPNO_WEBSITE"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "doctor"
+	}
+}
