@@ -14,22 +14,17 @@
 
 <header>
   <div class="logo">
-    <img  src="./assets/logo.png" alt="Mind & Health Wellness Logo">
+    <img src="./assets/logo.png" alt="Mind & Health Wellness Logo">
   </div>
-
-  <!-- Menu Toggle Button (Right side) -->
   <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-
   <nav id="navbar">
-    <!-- Close Button inside menu -->
     <div class="close-btn" id="close-btn">&times;</div>
-
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="./appoinment.html">Appointments</a>
-        <a href="gallary.html">certificates</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" class="active" id="navHome">Home</a>
+    <a href="about.html" id="navAbout">About</a>
+    <a href="services.html" id="navServices">Services</a>
+    <a href="./appoinment.html" id="navAppointments">Appointments</a>
+    <a href="gallary.html" id="navCertificates">Certificates</a>
+    <a href="contact.html" id="navContact">Contact</a>
     <select id="language" onchange="changeLanguage()">
       <option value="en">English</option>
       <option value="mr">मराठी</option>
@@ -37,11 +32,10 @@
   </nav>
 </header>
 
-
 <section class="about-hero">
   <div class="about-hero-content">
-    <h1>About Mind & Health Wellness Centre</h1>
-    <p>Dedicated to healing your mind, body & soul through Hypnosis, Yoga and Ayurveda.</p>
+    <h1 id="aboutHeroTitle">About Mind & Health Wellness Centre</h1>
+    <p id="aboutHeroDesc">Dedicated to healing your mind, body & soul through Hypnosis, Yoga and Ayurveda.</p>
   </div>
 </section>
 
@@ -51,32 +45,32 @@
       <img src="./assets/expert-img.jpeg" alt="Dr. Haribhau Dorlikar">
     </div>
     <div class="about-text">
-      <h2>Our Founder: Dr. Haribhau Dorlikar</h2>
-      <p>With over 26 years of experience in clinical and stage hypnosis, Dr. Dorlikar holds an MPhil & PhD in Hypnosis & Alternative Medicine. He has successfully treated over 70,000 patients through holistic wellness therapies.</p>
-      <p>Our center believes in the perfect blend of ancient healing with modern science. We aim to bring inner peace and physical well-being to every individual by combining Hypnotherapy, Yoga, Meditation and Ayurveda treatments.</p>
+      <h2 id="founderSection">Our Founder: Dr. Haribhau Dorlikar</h2>
+      <p id="aboutPara1">With over 26 years of experience in clinical and stage hypnosis, Dr. Dorlikar holds an MPhil & PhD in Hypnosis & Alternative Medicine. He has successfully treated over 70,000 patients through holistic wellness therapies.</p>
+      <p id="aboutPara2">Our center believes in the perfect blend of ancient healing with modern science. We aim to bring inner peace and physical well-being to every individual by combining Hypnotherapy, Yoga, Meditation and Ayurveda treatments.</p>
     </div>
   </div>
 </section>
 
 <section class="mission-section">
-  <h2>Our Mission</h2>
-  <p>To empower individuals to live a healthier, happier life by providing natural, holistic healing solutions that address both mind and body.</p>
+  <h2 id="missionTitle">Our Mission</h2>
+  <p id="missionContent">To empower individuals to live a healthier, happier life by providing natural, holistic healing solutions that address both mind and body.</p>
 </section>
 
 <section class="values-section">
-  <h2>Our Core Values</h2>
-  <div class="values-container">
+  <h2 id="valuesTitle">Our Core Values</h2>
+  <div class="values-container" id="valuesContent">
     <div class="value-item">
-      <h3>Compassion</h3>
-      <p>We care for every individual’s well-being deeply and sincerely.</p>
+      <h3 id="aboutValue1Title">Compassion</h3>
+      <p id="aboutValue1Text">We care for every individual’s well-being deeply and sincerely.</p>
     </div>
     <div class="value-item">
-      <h3>Excellence</h3>
-      <p>Delivering top quality treatments with expertise & continuous learning.</p>
+      <h3 id="aboutValue2Title">Excellence</h3>
+      <p id="aboutValue2Text">Delivering top quality treatments with expertise & continuous learning.</p>
     </div>
     <div class="value-item">
-      <h3>Integrity</h3>
-      <p>Following ethical practices and complete transparency with our patients.</p>
+      <h3 id="aboutValue3Title">Integrity</h3>
+      <p id="aboutValue3Text">Following ethical practices and complete transparency with our patients.</p>
     </div>
   </div>
 </section>
@@ -86,12 +80,12 @@
     <div class="footer-column">
       <h3>About</h3>
       <div class="footer-line"></div>
-      <p>Welcome to a holistic haven of healing...</p>
+      <p id="footerAboutText">Welcome to a holistic haven of healing...</p>
     </div>
     <div class="footer-column">
       <h3>Quick Links</h3>
       <div class="footer-line"></div>
-      <ul>
+      <ul id="footerQuickLinks">
         <li>Home</li>
         <li>About Us</li>
         <li>Courses</li>
@@ -102,7 +96,7 @@
     <div class="footer-column">
       <h3>Treatment</h3>
       <div class="footer-line"></div>
-      <ul>
+      <ul id="footerTreatments">
         <li>Anxiety</li>
         <li>Depression</li>
         <li>Fears</li>
@@ -113,9 +107,9 @@
     <div class="footer-column">
       <h3>Contact Us</h3>
       <div class="footer-line"></div>
-      <p>+91-8329212282</p>
-      <p>MIND & HEALTH WELLNESS CENTRE</p>
-      <p>Bhande Plot chowk,Nandanvan Road <br>Nagpur 440022</p>
+      <p id="contactPhone">+91-8329212282</p>
+      <p id="contactClinic">MIND & HEALTH WELLNESS CENTRE</p>
+      <p id="contactAddress">Bhande Plot chowk,Nandanvan Road <br>Nagpur 440022</p>
     </div>
   </div>
 </footer>
@@ -139,8 +133,6 @@
     }
   });
 </script>
-<script src="js/script.js"></script>
-
-
+<script src="./lang.js"></script>
 </body>
 </html>
