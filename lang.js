@@ -56,43 +56,43 @@ const translations = {
     
     service1Title: "Psychiatric Consultation",
     service1Desc: "Professional help for mental wellness",
-    service1Btn: "Read More",
+    service1Btn: "Book My Service",
 
     service2Title: "Yoga Therapy",
     service2Desc: "Healing through guided yoga sessions",
-    service2Btn: "Read More",
+    service2Btn: "Book My Service",
 
     service3Title: "Geriatric Care",
     service3Desc: "Support for elderly mental health",
-    service3Btn: "Read More",
+    service3Btn: "Book My Service",
 
     service4Title: "Sleep Therapy",
     service4Desc: "Techniques to improve sleep quality",
-    service4Btn: "Read More",
+    service4Btn: "Book My Service",
 
     service5Title: "Anxiety Treatment",
     service5Desc: "Effective therapy for anxiety relief",
-    service5Btn: "Read More",
+    service5Btn: "Book My Service",
 
     service6Title: "Student Counseling",
     service6Desc: "Academic and personal support for students",
-    service6Btn: "Read More",
+    service6Btn: "Book My Service",
 
     service7Title: "Mindfulness Meditation",
     service7Desc: "Achieve calmness and clarity",
-    service7Btn: "Read More",
+    service7Btn: "Book My Service",
 
     service8Title: "Short-Term Therapy",
     service8Desc: "Focused sessions for specific issues",
-    service8Btn: "Read More",
+    service8Btn: "Book My Service",
 
     service9Title: "Depression Therapy",
     service9Desc: "Empathetic support for depression",
-    service9Btn: "Read More",
+    service9Btn: "Book My Service",
 
     service10Title: "Stress Management",
     service10Desc: "Manage everyday stress effectively",
-    service10Btn: "Read More",
+    service10Btn: "Book My Service",
 
     //appoinment page
      appointmentHeroTitle: "Schedule Your Appointment",
