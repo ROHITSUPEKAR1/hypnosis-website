@@ -6,6 +6,128 @@
   <title>Continuous Scrolling Certificates</title>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
+
+    /* Header */
+header {
+  background-color: #e3f2fd;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: 120px;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger Menu Icon */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: #0277bd;
+  cursor: pointer;
+}
+
+/* Nav (for large screens) */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #0277bd;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #01579b;
+}
+
+nav select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #0277bd;
+  background: white;
+  color: #0277bd;
+}
+
+/* Close Button */
+.close-btn {
+  display: none;
+  font-size: 30px;
+  color: #0277bd;
+  text-align: right;
+  cursor: pointer;
+  padding-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  #menu-toggle{
+    position: absolute;
+    right: 10%;
+  }
+
+  nav {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 60%;
+    width: 250px;
+    background-color: #e3f2fd;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    transform: translateX(100%);
+    margin-top: 90px;
+    transition: transform 0.3s ease;
+    z-index: 100;
+  }
+
+  nav.show {
+    transform: translateX(0);
+  }
+
+  .close-btn {
+    margin-left: 20px;
+    display: block;
+    align-self: flex-end;
+  }
+
+  nav a {
+    /* margin: 15px 0; */
+  }
+
+  nav select {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    width: 70px;
+  }
+}
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -58,12 +180,6 @@
       transform: scale(1.05);
     }
 
-    .hint {
-      font-size: 14px;
-      color: #777;
-      margin-top: 12px;
-    }
-
     @keyframes scrollLeft {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -84,10 +200,6 @@
         width: 180px;
         height: 160px;
         margin: 0 4px;
-      }
-
-      .hint {
-        font-size: 12px;
       }
 
       .cert-wrapper {
@@ -146,36 +258,187 @@
         height: 100px;
       }
     }
+
+    .footer {
+      background-color: #0d0d0d;
+      color: #fff;
+      padding: 50px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .footer-column {
+      flex: 1 1 200px;
+      min-width: 250px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .footer-line {
+      width: 30px;
+      height: 3px;
+      background-color: #00cfe8;
+      margin: 10px auto 20px auto;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column li {
+      margin: 8px 0;
+    }
+
+    .footer-column p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-column {
+        margin-bottom: 30px;
+      }
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+    }
+
+    .modal-content video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      outline: none;
+    }
   </style>
 </head>
 <body>
-
-  <!-- <h1>Dr. Haribhau Dorlikar's Certificates</h1> -->
-
-  <div class="cert-wrapper">
-    <div class="cert-container" id="certContainer">
-      <!-- Images will be inserted here -->
-    </div>
+  <header>
+  <div class="logo">
+    <img src="./assets/logo.png" alt="Mind & Health Wellness Logo">
   </div>
 
-  <!-- <div class="hint">Touch/Click a certificate to pause scrolling for 5 seconds</div> -->
+  <!-- Menu Toggle Button (Right side) -->
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
 
-  <!-- Video Section -->
+  <nav id="navbar">
+    <!-- Close Button inside menu -->
+    <div class="close-btn" id="close-btn">&times;</div>
+
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="appoinment.html">Appointments</a>
+    <a href="gallary.html">certificates</a>
+    <a href="contact.html">Contact</a>
+    <select id="language" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="mr">मराठी</option>
+    </select>
+  </nav>
+</header>
+
+  <div class="cert-wrapper">
+    <div class="cert-container" id="certContainer"></div>
+  </div>
+
   <div class="video-section">
     <div class="video-title">Actions</div>
-    <div class="video-container" id="videoContainer">
-      <!-- Videos will be inserted here -->
+    <div class="video-container" id="videoContainer"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About</h3>
+        <div class="footer-line"></div>
+        <p>Welcome to a holistic haven of healing...</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <div class="footer-line"></div>
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Courses</li>
+          <li>News & Events</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Treatment</h3>
+        <div class="footer-line"></div>
+        <ul>
+          <li>Anxiety</li>
+          <li>Depression</li>
+          <li>Fears</li>
+          <li>Sleep Disorders</li>
+          <li>Psychosomatic Disorders</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <div class="footer-line"></div>
+        <p>+91-8329212282</p>
+        <p>MIND & HEALTH WELLNESS CENTRE</p>
+        <p>Bhande Plot chowk, Nandanvan Road <br>Nagpur 440022</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <video id="modalVideo" controls autoplay muted ></video>
     </div>
   </div>
 
   <script>
     const certificates = [
-      "./assets/certiicate1.png", "./assets/certiicate2.png", "./assets/certiicate3.png", "./assets/certiicate4.png", "./assets/certiicate5.png",
-      "./assets/certiicate6.png", "./assets/certiicate7.png", "./assets/certiicate8.png", "./assets/certiicate9.png", "./assets/certiicate10.png"
+      "./assets/certiicate1.png", "./assets/certiicate2.png", "./assets/certiicate3.png",
+      "./assets/certiicate4.png", "./assets/certiicate5.png", "./assets/certiicate6.png",
+      "./assets/certiicate7.png", "./assets/certiicate8.png", "./assets/certiicate9.png",
+      "./assets/certiicate10.png"
     ];
 
     const videos = [
-      "video.mp4", "video2.mp4", "video4.mp4", "video5.mp4", "video9.mp4","video6.mp4"
+      "./videos/video.mp4", "./videos/video2.mp4", "./videos/video4.mp4",
+      "./videos/video5.mp4", "./videos/video6.mp4", "./videos/video9.mp4"
     ];
 
     const container = document.getElementById("certContainer");
@@ -198,10 +461,8 @@
           img.alt = `Certificate ${index + 1}`;
           img.className = "cert-image";
           img.loading = "lazy";
-
           img.addEventListener("click", pauseScroll);
           img.addEventListener("touchstart", pauseScroll);
-
           container.appendChild(img);
         });
       }
@@ -223,19 +484,50 @@
         video.controls = false;
 
         video.addEventListener("click", function () {
-          if (video.paused) {
-            video.play();
-          } else {
-            video.pause();
-          }
+          const modal = document.getElementById("videoModal");
+          const modalVideo = document.getElementById("modalVideo");
+          modalVideo.src = this.src;
+          modal.style.display = "flex";
+          modalVideo.play();
         });
 
         videoContainer.appendChild(video);
       });
     }
 
+    // Close modal
+    document.getElementById("videoModal").addEventListener("click", function (e) {
+      if (e.target.id === "videoModal") {
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+        modalVideo.pause();
+        modalVideo.src = "";
+        modal.style.display = "none";
+      }
+    });
+
     addCertificates();
     addVideos();
+
+     const menuToggle = document.getElementById('menu-toggle');
+  const navbar = document.getElementById('navbar');
+  const closeBtn = document.getElementById('close-btn');
+
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.add('show');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    navbar.classList.remove('show');
+  });
+
+  // Close menu when clicked outside
+  window.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && e.target !== menuToggle) {
+      navbar.classList.remove('show');
+    }
+  });
+
   </script>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -245,7 +537,5 @@
       once: true
     });
   </script>
-  <script src="js/script.js"></script>
-
 </body>
 </html>
